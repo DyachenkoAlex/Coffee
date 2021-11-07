@@ -4,3 +4,6 @@
 
 3> Перейдите к определенному пути к папке с файлами в 
 CMD и выполните команду http-server
+
+cd Users\admin\Desktop\Coffee\css\scss
+sass --watch style.scss:style.css
