@@ -2,49 +2,67 @@
 $(function() {
     $(window).on("scroll", function() {
         if($(window).scrollTop() > 150) {
-            $(".header").addClass("active");
+            $(".header, .logo--name--left").addClass("active");
         } else {
-            //remove the background property so it comes transparent again (defined in your css)
-           $(".header").removeClass("active");
-        }
-    });
-});
-
-$(function() {
-    $(window).on("scroll", function() {
-        if($(window).scrollTop() > 150) {
-            $(".logo-name--left").addClass("active");
-        } else {
-            //remove the background property so it comes transparent again (defined in your css)
-           $(".logo-name--left").removeClass("active");
+           $(".header, .logo--name--left").removeClass("active");
         }
     });
 });
 
 $(function() {
     $(".header__btn").click(function() {
-        if($(".header__btn").hasClass("test__btn")) {
-            $(".header__btn").removeClass("test__btn");
+        if($(".header__btn").hasClass("active")) {
+            $(".header__btn, .navigation__cover").removeClass("active");
         } else {
-            $(".header__btn").addClass("test__btn");
+            $(".header__btn, .navigation__cover").addClass("active");
+        }
+    });
+    $(".nav--link").click(function() {
+        if($(".navigation__cover").hasClass("active")) {
+            if($(".header__btn").hasClass("active")) {
+                $(".header__btn").removeClass("active");
+            }
+            $(".navigation__cover").removeClass("active");
+        } else {
+            $(".navigation__cover").addClass("active");
         }
     });
 });
-$(function() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    console.log('entry.IsIntersecting');
-                }
-            });
-    }, {
-        threshold: 0.7,
-    });
 
-    document.querySelectorAll(".section").forEach(
-        (section) => observer.observe(section),
-    );
-});
+// $(function() {
+//         jQuery(window).scroll(function(){
+
+//             var $sections = $('section');
+
+//             $sections.each(function(i,el){ 
+
+//                 var id = $(el).attr('id'); 
+
+//                 $(id).on('inview', function(event, isInView) {
+//                     if (isInView) {
+//                         $(".span1").text(id);
+//                         $('a[href="#'+id+'"]').addClass('active');  
+//                     } else {
+//                         $(".span2").text(id)
+//                         $('a.active').removeClass('active');
+//                     }
+//                 });
+//             })
+//         });
+    //     const observer = new IntersectionObserver((entries) => {
+    //         entries.forEach((entry) => {
+    //             if (entry.isIntersecting) {
+    //                 console.log('entry.IsIntersecting');
+    //             }
+    //         });
+    // }, {
+    //     threshold: 0.7,
+    // });
+
+    // document.querySelectorAll(".section").forEach(
+    //     (section) => observer.observe(section),
+    // );
+// });
 
 
 // $(function() {
@@ -131,35 +149,15 @@ $(function() {
 // });
 
 
-
-jQuery(document).ready(function($) {
-    $('.popup-content').magnificPopup({
-        type: 'inline'
+$(function() {
+    jQuery(document).ready(function($) {
+        $('.popup-content').magnificPopup({
+            type: 'inline'
+        });
     });
-});
 
-
-// Initialize popup as usual
 $('.popup-link').magnificPopup({
-    // Delay in milliseconds before popup is removed
     removalDelay: 300,
-  
-    // Class that is added to popup wrapper and background
-    // make it unique to apply your CSS animations just to this exact popup
     mainClass: 'mfp-fade'
   });
-//    zoom = 1.5 // set a start value to coords.zoom  
-//    $('.image').bind('mousewheel', function(e){
-//    if(e.originalEvent.wheelDelta > 0){ 
-
-//        zoom = zoom + 0.1;
-//        if (zoom>3){zoom = 3} // 3 is the max value of coords.zoom
-//        $("#zoom").text(zoom);
-
-//    } else {
-
-//        zoom = zoom - 0.1;
-//        if (zoom<1.2){zoom = 1.2} // 1.2 is the min value of coords.zoom
-//        $("#zoom").text(zoom);
-//     }
-//   });
+})
