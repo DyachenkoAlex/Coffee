@@ -3,12 +3,23 @@ $(document).ready(function(){
   });
 var owl = $('.owl-carousel');
 owl.owlCarousel({
-    items:3,
     loop:true,
     margin:40,
     autoplay:true,
     autoplayTimeout:3000,
-    autoplayHoverPause:true
+    autoplayHoverPause:true,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+        },
+        520:{
+            items:2,
+        },
+        767:{
+            items:3,
+        }
+    }
 });
 $('.play').on('click',function(){
     owl.trigger('play.owl.autoplay',[1000])
@@ -16,3 +27,4 @@ $('.play').on('click',function(){
 $('.stop').on('click',function(){
     owl.trigger('stop.owl.autoplay')
 })
+
